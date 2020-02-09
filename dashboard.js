@@ -4,4 +4,11 @@ module.exports = function(app, sql) {
       response.send(result);
     });
   });
+
+  app.post("/api/dashboard/article/publish", function(request, response) {
+    const { id, published } = request.body;
+    sql.updateArticlePublishState({ id, published }, function(result) {
+      response.send(result);
+    });
+  });
 };
