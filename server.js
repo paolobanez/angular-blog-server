@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const sql = require("./sql");
 
 const app = express();
 
@@ -11,10 +12,11 @@ app.use(cors(corsOptions));
 
 app.listen(8000, () => {
   console.log("Server is started and listening.");
+  sql.init();
 });
 
 app.get("/api/", function(request, response) {
   response.send("Hello Node.js!");
 });
 
-require("./articles")(app);
+require("./articles")(app, sql);
