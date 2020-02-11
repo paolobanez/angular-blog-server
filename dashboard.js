@@ -11,4 +11,16 @@ module.exports = function(app, sql) {
       response.send(result);
     });
   });
+
+  app.get("/api/dashboard/article/:key", function(request, response) {
+    sql.getDashboardArticleByKey(request.params.key, result => {
+      response.send(result);
+    });
+  });
+
+  app.put("/api/dashboard/article", function(request, response) {
+    sql.updateArticle(request.body, result => {
+      response.send(result);
+    });
+  });
 };
