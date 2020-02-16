@@ -23,7 +23,7 @@ module.exports = function(app, sql) {
         response.send(401);
       } else {
         let token = jwtUtil.signJwt(name);
-        response.send(token);
+        response.send({ token });
       }
     });
   });
