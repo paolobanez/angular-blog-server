@@ -12,5 +12,20 @@ module.exports = {
     };
 
     return jwt.sign(payload, privateKey, signOptions);
+  },
+
+  verifyJwt: function(token) {
+    let publicKey = fs.readFileSync("./public.key", "utf8");
+
+    let verifyOptions = {
+      expiredIn: "12h",
+      algorithm: "RS256"
+    };
+
+    try {
+      return jwt.verify(token, publicKey, verifyOptions);
+    } catch (err) {
+      return false;
+    }
   }
 };
