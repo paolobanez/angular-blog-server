@@ -23,3 +23,4 @@ app.get("/api/", function(request, response) {
 
 require("./articles")(app, sql);
 require("./dashboard")(app, sql);
+require("./auth")(app, sql);
