@@ -20,7 +20,7 @@ module.exports = function(app, sql) {
 
     sql.login({ name, password }, result => {
       if (!result) {
-        response.send(401);
+        response.sendStatus(401);
       } else {
         let token = jwtUtil.signJwt(name);
         response.send({ token });
