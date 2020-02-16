@@ -23,4 +23,14 @@ module.exports = function(app, sql) {
       response.send(result);
     });
   });
+
+  app.delete("/api/dashboard/article/:id", function(request, response) {
+    sql.deleteArticle(request.params.id, result => {
+      if (result != null) {
+        response.send(result);
+      } else {
+        response.status(400).send({ message: "Article could not be deleted!" });
+      }
+    });
+  });
 };
