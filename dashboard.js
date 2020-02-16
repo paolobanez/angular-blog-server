@@ -33,4 +33,10 @@ module.exports = function(app, sql) {
       }
     });
   });
+
+  app.post("/api/dashboard/article", function(request, response) {
+    sql.createArticle(request.body, function(result) {
+      response.send(result);
+    });
+  });
 };
